@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { updateDoc, doc } from "firebase/firestore";
+import { AuthContext } from "../context/auth";
 
 function Navbar() {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSignout = async () => {
@@ -22,7 +24,7 @@ function Navbar() {
         <Link to="/">Tinychat</Link>
       </h3>
       <div>
-        {auth.currentUser ? (
+        {user ? (
           <>
             <Link to="/profile">Profile</Link>
             <button className="btn" onClick={handleSignout}>

@@ -1,9 +1,9 @@
 import React from "react";
 import defImg from "../images/Mirza-profile.png";
 
-function User({ user }) {
+function User({ user, selectUser }) {
   return (
-    <div className="user_wrapper">
+    <div className="user_wrapper" onClick={() => selectUser(user)}>
       <div className="user_info">
         <div className="user_detail">
           <img src={user.avatar || defImg} alt="avatar" className="avatar" />

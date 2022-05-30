@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { updateDoc, doc } from "firebase/firestore";
 import { AuthContext } from "../context/auth";
+import logo from "../images/tinychat-logo.png";
 
 function Navbar() {
   const { user } = useContext(AuthContext);
@@ -20,8 +21,10 @@ function Navbar() {
 
   return (
     <nav>
-      <h3>
-        <Link to="/">Tinychat</Link>
+      <h3 style={{ margin: "5px 0", paddingTop: "5px" }}>
+        <Link to="/">
+          <img src={logo} alt="tinychat logo" style={{ height: "30px" }} />
+        </Link>
       </h3>
       <div>
         {user ? (

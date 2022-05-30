@@ -55,7 +55,7 @@ function Register() {
 
   return (
     <section>
-      <h3>Create An Account</h3>
+      <h3>Create an Account</h3>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input_container">
           <label htmlFor="name">Name</label>

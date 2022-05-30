@@ -10,6 +10,7 @@ import {
   addDoc,
   doc,
   updateDoc,
+  setDoc,
   getDoc,
 } from "firebase/firestore";
 import User from "../components/User";
@@ -62,7 +63,7 @@ function Home() {
     // get last message b/w logged in user and selected user
     const docSnap = await getDoc(doc(db, "lastMsg", id));
     // if last message exists and message is from selected user
-    if (docSnap.data() && docSnap.data().from !== user1) {
+    if (docSnap.data() && docSnap.data()?.from !== user1) {
       // update last message doc, set unread to false
       await updateDoc(doc(db, "lastMsg", id), { unread: false });
     }
@@ -96,6 +97,17 @@ function Home() {
       to: user2,
       createdAt: Timestamp.fromDate(new Date()),
     });
+
+    await setDoc(doc(db, "lastMsg", id), {
+      text,
+      from: user1,
+      to: user2,
+      createdAt: Timestamp.fromDate(new Date()),
+      media: url || "",
+      unread: true,
+    });
+
+    setImg("");
     setText("");
   };
 
@@ -104,7 +116,13 @@ function Home() {
     <div className="home_container">
       <div className="users_container">
         {users.map((user) => (
-          <User key={user.uid} user={user} selectUser={selectUser} />
+          <User
+            key={user.uid}
+            user={user}
+            selectUser={selectUser}
+            user1={user1}
+            chat={chat}
+          />
         ))}
       </div>
       <div className="messages_container">

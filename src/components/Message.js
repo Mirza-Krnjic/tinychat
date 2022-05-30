@@ -5,6 +5,8 @@ const Message = ({ msg, user1 }) => {
   const scrollRef = useRef();
 
   useEffect(() => {
+    console.log(`1 message clg: ${msg}`);
+    console.log(`2 msg.media: ${msg.media}`);
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [msg]);
   return (

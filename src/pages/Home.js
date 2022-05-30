@@ -94,6 +94,7 @@ function Home() {
       from: user1,
       to: user2,
       createdAt: Timestamp.fromDate(new Date()),
+      media: url || "",
     });
 
     await setDoc(doc(db, "lastMsg", id), {
@@ -104,6 +105,8 @@ function Home() {
       media: url || "",
       unread: true,
     });
+
+    console.log(img);
 
     setImg("");
     setText("");

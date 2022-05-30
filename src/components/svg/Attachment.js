@@ -6,9 +6,10 @@ const Attachment = () => {
       xmlns="http://www.w3.org/2000/svg"
       style={{
         width: "25px",
-        height: "25px",
+        height: "20px",
         cursor: "pointer",
         color: "gray",
+        paddingTop: "2px",
       }}
       viewBox="0 0 20 20"
       fill="currentColor"

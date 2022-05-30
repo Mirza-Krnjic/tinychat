@@ -51,6 +51,7 @@ function Login() {
         <div className="input_container">
           <label htmlFor="email">Email</label>
           <input
+            style={{ borderRadius: "100px" }}
             type="text"
             name="email"
             value={email}
@@ -60,6 +61,7 @@ function Login() {
         <div className="input_container">
           <label htmlFor="password">Password</label>
           <input
+            style={{ borderRadius: "100px" }}
             type="text"
             name="password"
             value={password}
@@ -68,7 +70,16 @@ function Login() {
         </div>
         {error ? <p className="error">{error}</p> : null}
         <div className="btn_container">
-          <button className="btn" disabled={loading}>
+          <button
+            className="btn"
+            style={{
+              borderRadius: "100px",
+              backgroundColor: "transparent",
+              marginTop: "20px",
+              padding: "5px 20px",
+            }}
+            disabled={loading}
+          >
             {loading ? "Logging in ..." : "Login"}
           </button>
         </div>

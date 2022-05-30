@@ -31,11 +31,13 @@ nav div a {
 }
 
 section {
+  background-color: #37383f;
   max-width: 500px;
   margin: 0 auto;
-  margin-top: 100px;
-  box-shadow: 1px 2px 10px var(--color-4);
+  margin-top: 22vh;
   padding: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.131) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 5px;
 }
 section h3 {
@@ -65,7 +67,7 @@ section .form {
 }
 .btn {
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 100px;
   outline: none;
   border: 1px solid var(--color-4);
   background: var(--color-1);
@@ -187,24 +189,26 @@ section .form {
   text-align: center;
 }
 .message_form {
-  position: absolute;
-  bottom: 0;
-  left: 20%;
+  /* position: absolute; */
+  /* bottom: 0; */
+  left: 15%;
   width: 100%;
-  height: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 .message_form input {
   width: 40vw;
-  margin: 0px 10px 10px;
+  /* margin: 0px 10px 10px; */
   padding: 10px;
   border-radius: 5px;
   outline: none;
   border: none;
 }
 .message_form .btn {
-  margin-top: -10px;
+  /* margin-top: -10px; */
 }
 .messages {
   height: calc(100vh - 200px);

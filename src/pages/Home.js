@@ -144,7 +144,9 @@ function Home() {
             />
           </>
         ) : (
-          <h3 className="no_conv">Select user to start a conversation</h3>
+          <h3 className="no_conv" style={{ padding: "0 5px" }}>
+            Select user to start a conversation
+          </h3>
         )}
       </div>
     </div>

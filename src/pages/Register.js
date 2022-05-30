@@ -59,11 +59,18 @@ function Register() {
       <form className="form" onSubmit={handleSubmit}>
         <div className="input_container">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" value={name} onChange={handleChange} />
+          <input
+            style={{ borderRadius: "100px" }}
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
         </div>
         <div className="input_container">
           <label htmlFor="email">Email</label>
           <input
+            style={{ borderRadius: "100px" }}
             type="text"
             name="email"
             value={email}
@@ -73,6 +80,7 @@ function Register() {
         <div className="input_container">
           <label htmlFor="password">Password</label>
           <input
+            style={{ borderRadius: "100px" }}
             type="text"
             name="password"
             value={password}
@@ -81,7 +89,16 @@ function Register() {
         </div>
         {error ? <p className="error">{error}</p> : null}
         <div className="btn_container">
-          <button className="btn" disabled={loading}>
+          <button
+            className="btn"
+            style={{
+              borderRadius: "100px",
+              backgroundColor: "transparent",
+              marginTop: "20px",
+              padding: "5px 20px",
+            }}
+            disabled={loading}
+          >
             {loading ? "Registering..." : "Register"}
           </button>
         </div>

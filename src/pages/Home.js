@@ -6,17 +6,23 @@ import {
   where,
   onSnapshot,
   Timestamp,
+  orderBy,
   addDoc,
+  doc,
+  updateDoc,
+  getDoc,
 } from "firebase/firestore";
 import User from "../components/User";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import MessageForm from "../components/MessageForm";
+import Message from "../components/Message";
 
 function Home() {
   const [users, setUsers] = useState([]);
   const [chat, setChat] = useState("");
   const [text, setText] = useState("");
   const [img, setImg] = useState("");
+  const [msgs, setMsgs] = useState([]);
 
   // current logged user
   const user1 = auth.currentUser.uid;
@@ -38,7 +44,28 @@ function Home() {
 
   const selectUser = async (user) => {
     setChat(user);
-    console.log(user);
+
+    const user2 = user.uid;
+    const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
+
+    const msgsRef = collection(db, "messages", id, "chat");
+    const q = query(msgsRef, orderBy("createdAt", "asc"));
+
+    onSnapshot(q, (querySnapshot) => {
+      let msgs = [];
+      querySnapshot.forEach((doc) => {
+        msgs.push(doc.data());
+      });
+      setMsgs(msgs);
+    });
+
+    // get last message b/w logged in user and selected user
+    const docSnap = await getDoc(doc(db, "lastMsg", id));
+    // if last message exists and message is from selected user
+    if (docSnap.data() && docSnap.data().from !== user1) {
+      // update last message doc, set unread to false
+      await updateDoc(doc(db, "lastMsg", id), { unread: false });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -85,6 +112,13 @@ function Home() {
           <>
             <div className="messages_user">
               <h3>{chat.name}</h3>
+            </div>
+            <div className="messages">
+              {msgs.length
+                ? msgs.map((msg, i) => (
+                    <Message key={i} msg={msg} user1={user1} />
+                  ))
+                : null}
             </div>
             <MessageForm
               handleSubmit={handleSubmit}

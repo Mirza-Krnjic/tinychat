@@ -16,6 +16,7 @@ function MessageForm({ handleSubmit, text, setText, setImg }) {
       />
       <div>
         <input
+          style={{ borderRadius: "100px" }}
           type="text"
           placeholder="Enter message"
           value={text}
@@ -23,7 +24,16 @@ function MessageForm({ handleSubmit, text, setText, setImg }) {
         />
       </div>
       <div>
-        <button className="btn">Send</button>
+        <button
+          className="btn"
+          style={{
+            backgroundColor: "transparent",
+            borderRadius: "200px",
+            padding: "8px 16px",
+          }}
+        >
+          Send
+        </button>
       </div>
     </form>
   );

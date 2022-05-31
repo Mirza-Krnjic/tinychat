@@ -7,6 +7,8 @@ A simple minimal Web application to chat in private with friends
 
 **Tech:** React, Firebase, CSS
 
+#### `Available at:`
+
 ***URL:*** 
 [tinychat](https://tinychat.netlify.app/)
 
